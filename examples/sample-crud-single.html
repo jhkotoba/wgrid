@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>wgrid CRUD Sample</title>
+    <link id="wgrid-theme" rel="stylesheet" href="../src/wgrid_white.css" />
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      body {
+        margin: 0;
+        background: #f7f8fb;
+        color: #111827;
+      }
+      .page {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
+        display: grid;
+        gap: 16px;
+      }
+      header {
+        display: grid;
+        gap: 8px;
+      }
+      h1 {
+        font-size: 20px;
+        margin: 0;
+      }
+      .sample-menu {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .sample-menu-link {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid #d1d5db;
+        border-radius: 999px;
+        background: #fff;
+        padding: 5px 12px;
+        font-size: 12px;
+        color: #374151;
+        text-decoration: none;
+      }
+      .sample-menu-link:hover {
+        background: #f3f4f6;
+      }
+      .sample-menu-link.is-active {
+        border-color: #111827;
+        background: #111827;
+        color: #fff;
+      }
+      .note {
+        font-size: 12px;
+        color: #6b7280;
+      }
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+      }
+      .controls button,
+      .controls select,
+      #item-form .actions button,
+      #item-form input:not([type="checkbox"]),
+      #item-form select {
+        border: 1px solid #d1d5db;
+        background: #fff;
+        padding: 6px 10px;
+        border-radius: 6px;
+        font-size: 13px;
+      }
+      .field-inline input[type="checkbox"] {
+        padding: 0;
+        margin: 0;
+        vertical-align: middle;
+      }
+      .controls button,
+      #item-form .actions button {
+        cursor: pointer;
+      }
+      .controls button:hover,
+      #item-form .actions button:hover {
+        background: #f3f4f6;
+      }
+      .controls button:disabled,
+      #item-form .actions button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+      .theme-label {
+        font-size: 12px;
+        color: #6b7280;
+        margin-left: 4px;
+      }
+      .grid-panel,
+      .output-panel {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        padding: 12px;
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 360px;
+        gap: 16px;
+      }
+      .side-panels {
+        display: grid;
+        gap: 16px;
+      }
+      .panel-title {
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #374151;
+      }
+      .form-grid {
+        display: grid;
+        gap: 8px;
+      }
+      .field {
+        display: grid;
+        gap: 4px;
+      }
+      .field label {
+        font-size: 12px;
+        color: #6b7280;
+      }
+      .field-inline {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .field-inline label {
+        margin: 0;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .status-row {
+        min-height: 20px;
+        font-size: 12px;
+      }
+      .loading {
+        color: #1d4ed8;
+      }
+      .error {
+        color: #b91c1c;
+      }
+      .output-title {
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #374151;
+      }
+      #output {
+        margin: 0;
+        font-size: 12px;
+        white-space: pre-wrap;
+      }
+      @media (max-width: 900px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div id="sample-menu"></div>
+        <h1>sample-crud-single</h1>
+        <div class="controls">
+          <button type="button" id="btn-reload" data-api-action>Reload</button>
+          <label class="theme-label" for="theme-select">Theme</label>
+          <select id="theme-select" aria-label="Select wgrid theme">
+            <option value="white" selected>White</option>            
+            <option value="gray">Gray</option>
+            <option value="dark">Dark</option>
+          </select>
+        </div>
+        <div class="note">
+          This page uses single-record CRUD without paging. Click Create to enter
+          register mode, then click Register to save through <code>/api/items</code>.
+          Update/Delete uses <code>/api/items/:id</code>.
+        </div>
+      </header>
+      <div class="layout">
+        <section class="grid-panel">
+          <div id="grid"></div>
+        </section>
+        <div class="side-panels">
+          <section class="output-panel">
+            <div class="panel-title">CRUD Form</div>
+            <form id="item-form" class="form-grid" onsubmit="return false;">
+              <div class="field">
+                <label for="item-id">ID</label>
+                <input id="item-id" type="text" readonly />
+              </div>
+              <div class="field">
+                <label for="item-name">Name</label>
+                <input id="item-name" type="text" maxlength="60" />
+              </div>
+              <div class="field">
+                <label for="item-qty">Qty</label>
+                <input id="item-qty" type="number" value="0" />
+              </div>
+              <div class="field">
+                <label for="item-status">Status</label>
+                <select id="item-status">
+                  <option value="NEW">NEW</option>
+                  <option value="DONE">DONE</option>
+                  <option value="HOLD">HOLD</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="item-date">Date</label>
+                <input id="item-date" type="date" />
+              </div>
+              <div class="field field-inline">
+                <input id="item-active" type="checkbox" />
+                <label for="item-active">Active</label>
+              </div>
+              <div class="actions">
+                <button type="button" id="btn-create" data-api-action>Create</button>
+                <button type="button" id="btn-update" data-api-action>Update</button>
+                <button type="button" id="btn-delete" data-api-action>Delete</button>
+                <button type="button" id="btn-reset" data-api-action>Reset</button>
+              </div>
+              <div class="status-row">
+                <span id="loading" class="loading" hidden>Loading...</span>
+                <div id="error-message" class="error"></div>
+              </div>
+            </form>
+          </section>
+          <section class="output-panel">
+            <div class="output-title">Output</div>
+            <pre id="output">(no output yet)</pre>
+          </section>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./sample-crud-single.js"></script>
+  </body>
+</html>

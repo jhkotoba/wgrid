@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>wgrid Paging Search Sample</title>
+    <link id="wgrid-theme" rel="stylesheet" href="../src/wgrid_white.css" />
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      body {
+        margin: 0;
+        background: #f7f8fb;
+        color: #111827;
+      }
+      .page {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
+        display: grid;
+        gap: 16px;
+      }
+      header {
+        display: grid;
+        gap: 8px;
+      }
+      h1 {
+        font-size: 20px;
+        margin: 0;
+      }
+      .sample-menu {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .sample-menu-link {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid #d1d5db;
+        border-radius: 999px;
+        background: #fff;
+        padding: 5px 12px;
+        font-size: 12px;
+        color: #374151;
+        text-decoration: none;
+      }
+      .sample-menu-link:hover {
+        background: #f3f4f6;
+      }
+      .sample-menu-link.is-active {
+        border-color: #111827;
+        background: #111827;
+        color: #fff;
+      }
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+      }
+      .note {
+        font-size: 12px;
+        color: #6b7280;
+      }
+      .controls button,
+      .controls select,
+      .search-grid input,
+      .search-grid select {
+        border: 1px solid #d1d5db;
+        background: #fff;
+        padding: 6px 10px;
+        border-radius: 6px;
+        font-size: 13px;
+      }
+      .controls button {
+        cursor: pointer;
+      }
+      .controls button:hover {
+        background: #f3f4f6;
+      }
+      .controls button:disabled,
+      .controls select:disabled,
+      .search-grid input:disabled,
+      .search-grid select:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+      .theme-label {
+        font-size: 12px;
+        color: #6b7280;
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 360px;
+        gap: 16px;
+      }
+      .grid-panel,
+      .output-panel {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        padding: 12px;
+      }
+      .search-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      .field {
+        display: grid;
+        gap: 4px;
+      }
+      .field label {
+        font-size: 12px;
+        color: #6b7280;
+      }
+      .field.span-2 {
+        grid-column: span 2;
+      }
+      .status-row {
+        min-height: 20px;
+        font-size: 12px;
+      }
+      .loading {
+        color: #1d4ed8;
+      }
+      .error {
+        color: #b91c1c;
+      }
+      .output-title {
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #374151;
+      }
+      #output {
+        margin: 0;
+        font-size: 12px;
+        white-space: pre-wrap;
+      }
+      @media (max-width: 900px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+        .search-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div id="sample-menu"></div>
+        <h1>sample-paging</h1>
+        <div class="controls">
+          <button type="button" id="btn-search" data-api-action>Search</button>
+          <button type="button" id="btn-reload" data-api-action>Reload</button>
+          <button type="button" id="btn-reset" data-api-action>Reset</button>
+          <label class="theme-label" for="paging-mode">Paging Mode</label>
+          <select id="paging-mode" aria-label="Select paging mode">
+            <option value="server" selected>Server</option>
+            <option value="client">Client</option>
+          </select>
+          <label class="theme-label" for="theme-select">Theme</label>
+          <select id="theme-select" aria-label="Select wgrid theme">
+            <option value="white" selected>White</option>
+            <option value="gray">Gray</option>
+            <option value="dark">Dark</option>
+          </select>
+        </div>
+        <div class="note">
+          Read-only paging sample. Search supports: id/qty/status exact match, name contains (case-insensitive),
+          active all/true/false, and date range with <code>from</code> + <code>to</code> together.
+        </div>
+      </header>
+
+      <div class="layout">
+        <section class="grid-panel">
+          <div class="search-grid">
+            <div class="field">
+              <label for="search-id">ID</label>
+              <input id="search-id" type="number" inputmode="numeric" />
+            </div>
+            <div class="field span-2">
+              <label for="search-name">Name</label>
+              <input id="search-name" type="text" maxlength="60" />
+            </div>
+            <div class="field">
+              <label for="search-qty">Qty</label>
+              <input id="search-qty" type="number" inputmode="numeric" />
+            </div>
+            <div class="field">
+              <label for="search-status">Status</label>
+              <select id="search-status">
+                <option value="">All</option>
+                <option value="NEW">NEW</option>
+                <option value="DONE">DONE</option>
+                <option value="HOLD">HOLD</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="search-active">Active</label>
+              <select id="search-active">
+                <option value="all" selected>All</option>
+                <option value="true">true</option>
+                <option value="false">false</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="search-date-from">Date From</label>
+              <input id="search-date-from" type="date" />
+            </div>
+            <div class="field">
+              <label for="search-date-to">Date To</label>
+              <input id="search-date-to" type="date" />
+            </div>
+          </div>
+          <div id="grid"></div>
+        </section>
+
+        <section class="output-panel">
+          <div class="output-title">Status</div>
+          <div class="status-row">
+            <span id="loading" class="loading" hidden>Loading...</span>
+            <div id="error-message" class="error"></div>
+          </div>
+          <div class="output-title" style="margin-top: 12px">Output</div>
+          <pre id="output">(no output yet)</pre>
+        </section>
+      </div>
+    </div>
+
+    <script type="module" src="./sample-paging.js"></script>
+  </body>
+</html>

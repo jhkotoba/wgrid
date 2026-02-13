@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>wgrid Batch Apply Sample</title>
+    <link id="wgrid-theme" rel="stylesheet" href="../src/wgrid_white.css" />
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      body {
+        margin: 0;
+        background: #f7f8fb;
+        color: #111827;
+      }
+      .page {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
+        display: grid;
+        gap: 16px;
+      }
+      header {
+        display: grid;
+        gap: 8px;
+      }
+      h1 {
+        font-size: 20px;
+        margin: 0;
+      }
+      .sample-menu {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .sample-menu-link {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid #d1d5db;
+        border-radius: 999px;
+        background: #fff;
+        padding: 5px 12px;
+        font-size: 12px;
+        color: #374151;
+        text-decoration: none;
+      }
+      .sample-menu-link:hover {
+        background: #f3f4f6;
+      }
+      .sample-menu-link.is-active {
+        border-color: #111827;
+        background: #111827;
+        color: #fff;
+      }
+      .note {
+        font-size: 12px;
+        color: #6b7280;
+      }
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+      }
+      .controls button,
+      .controls select {
+        border: 1px solid #d1d5db;
+        background: #fff;
+        padding: 6px 10px;
+        border-radius: 6px;
+        font-size: 13px;
+      }
+      .controls button {
+        cursor: pointer;
+      }
+      .controls button:hover {
+        background: #f3f4f6;
+      }
+      .controls button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+      .theme-label {
+        font-size: 12px;
+        color: #6b7280;
+        margin-left: 4px;
+      }
+      .grid-panel,
+      .output-panel {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        padding: 12px;
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 360px;
+        gap: 16px;
+      }
+      .side-panels {
+        display: grid;
+        gap: 16px;
+      }
+      .panel-title {
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #374151;
+      }
+      .status-row {
+        min-height: 20px;
+        font-size: 12px;
+      }
+      .loading {
+        color: #1d4ed8;
+      }
+      .error {
+        color: #b91c1c;
+      }
+      #output {
+        margin: 0;
+        font-size: 12px;
+        white-space: pre-wrap;
+      }
+      @media (max-width: 900px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div id="sample-menu"></div>
+        <h1>sample-crud-apply</h1>
+        <div class="controls">
+          <button type="button" id="btn-reload" data-api-action>Reload</button>
+          <button type="button" id="btn-add-row" data-api-action>Row Add</button>
+          <button type="button" id="btn-delete-checked" data-api-action>Mark Delete</button>
+          <button type="button" id="btn-apply" data-api-action>Apply</button>
+          <label class="theme-label" for="theme-select">Theme</label>
+          <select id="theme-select" aria-label="Select wgrid theme">
+            <option value="white" selected>White</option>
+            <option value="gray">Gray</option>
+            <option value="dark">Dark</option>
+          </select>
+        </div>
+        <div class="note">
+          This page edits multiple rows without paging and sends changes in one request.
+          Only INSERT/UPDATE/REMOVE rows are collected and applied through
+          <code>/api/items/apply</code>.
+        </div>
+      </header>
+
+      <div class="layout">
+        <section class="grid-panel">
+          <div id="grid"></div>
+        </section>
+        <div class="side-panels">
+          <section class="output-panel">
+            <div class="panel-title">Status</div>
+            <div class="status-row">
+              <span id="loading" class="loading" hidden>Loading...</span>
+              <div id="error-message" class="error"></div>
+            </div>
+          </section>
+          <section class="output-panel">
+            <div class="panel-title">Output</div>
+            <pre id="output">(no output yet)</pre>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./sample-crud-apply.js"></script>
+  </body>
+</html>

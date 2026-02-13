@@ -1,0 +1,32 @@
+{
+  "name": "wgrid",
+  "version": "1.0.0",
+  "description": "wgrid",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "node examples/server.js",    
+    "build:js:esm": "esbuild src/wgrid.js --bundle --format=esm --minify --sourcemap --outfile=dist/wgrid.esm.min.js",
+    "build:js:iife": "esbuild src/wgrid.js --bundle --format=iife --minify --sourcemap --outfile=dist/wgrid.min.js",    
+    "build:css:dark": "esbuild src/wgrid_dark.css --minify --outfile=dist/wgrid_dark.min.css",
+    "build:css:gray": "esbuild src/wgrid_gray.css --minify --outfile=dist/wgrid_gray.min.css",
+    "build:css:white": "esbuild src/wgrid_white.css --minify --outfile=dist/wgrid_white.min.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhkotoba/wgrid.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jhkotoba/wgrid/issues"
+  },
+  "homepage": "https://github.com/jhkotoba/wgrid#readme",
+  "devDependencies": {
+    "esbuild": "^0.27.3"
+  }
+}

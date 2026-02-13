@@ -1,0 +1,174 @@
+.wgrid{background: #f6f6f6; font-size: 12px; color: #2f2f2f; border: 1px solid #d0d0d0; margin: 5px 0px 5px 0px; overflow: overlay; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.2; letter-spacing: normal; text-transform: none;}
+.wgrid::-webkit-scrollbar {width: 10px; height: 10px;}
+.wgrid::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {display: none;}
+.wgrid::-webkit-scrollbar-track {background: #e8e8e8; border: 1px solid #d5d5d5;}
+.wgrid::-webkit-scrollbar-thumb {background: #c4c4c4;}
+.wgrid::-webkit-scrollbar-corner{background: #e2e2e2;}
+
+.wgrid input[type='checkbox']{-webkit-appearance: none; -moz-appearance: none; appearance: none; background: rgb(230, 230, 230); border: 1px solid rgb(180, 180, 180); border-radius: 2px; box-sizing: border-box; cursor: pointer; height: 18px; margin: 0; outline: 0; padding: 0; position: relative; width: 18px;}
+.wgrid input[type='checkbox']::after{border: solid rgb(60, 60, 60); border-width: 0 2px 2px 0; content: ''; display: none; height: 40%; left: 37%; position: relative; top: 20%; transform: rotate(45deg); width: 15%;}
+.wgrid input[type='checkbox']:checked{background: #d9d9d9;}
+.wgrid input[type='checkbox']:checked::after {display: block;}
+.wgrid button,
+.wgrid input,
+.wgrid select,
+.wgrid textarea{font-family: inherit; font-size: inherit; font-weight: inherit; font-style: normal; line-height: 1.2; letter-spacing: normal; text-transform: none; box-shadow: none; margin: 0;}
+.wgrid button{-webkit-appearance: none; appearance: none;}
+
+.wgrid .header{overflow: hidden; scrollbar-gutter: stable;}
+.wgrid .header::-webkit-scrollbar {width: 10px;}
+.wgrid .header::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {display: none;}
+.wgrid .header::-webkit-scrollbar-track {background: #e8e8e8; border: 1px solid #d5d5d5;}
+.wgrid .header::-webkit-scrollbar-thumb {background: #c4c4c4;}
+.wgrid .header::-webkit-scrollbar-corner{background: #e2e2e2;}
+.wgrid .header table{background: #f0f0f0; border-collapse: collapse; border-spacing: 0; color: rgba(34, 34, 34, .9); width: 100%; table-layout: fixed;}
+.wgrid .header table th {border-bottom: 0; border-top: 0; border: 1px solid #d5d5d5; padding: 5px 5px 5px 5px; text-align: center; border-collapse: collapse; border-spacing: 0; height: 25px;}
+
+.wgrid .body{overflow: hidden; scrollbar-gutter: stable;}
+.wgrid .body::-webkit-scrollbar {width: 10px;}
+.wgrid .body::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {display: none;}
+.wgrid .body::-webkit-scrollbar-track {background: #e8e8e8; border: 1px solid #d5d5d5;}
+.wgrid .body::-webkit-scrollbar-thumb {background: #c4c4c4;}
+.wgrid .body::-webkit-scrollbar-corner{background: #e2e2e2;}
+.wgrid .body table{background: #ffffff; border-collapse: collapse; border-spacing: 0; font-size: 0.9em;  color: rgba(34, 34, 34, .9); width: 100%; table-layout: fixed;}
+.wgrid .body table tr:hover{ background: #f3f5f8;border-color: #e1e1e1;border-bottom: 0; border-top: 0; border: 1px solid #e1e1e1; padding: 5px 5px 5px 5px; text-align: center; border-collapse: collapse; border-spacing: 0; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;}
+.wgrid .body table tr:active{ background: #e8edf3;border-color: #e1e1e1;border-bottom: 0; border-top: 0; border: 1px solid #e1e1e1; padding: 5px 5px 5px 5px; text-align: center; border-collapse: collapse; border-spacing: 0; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;}
+
+.wgrid .body table tr.choose{background: #e6f0ff; font-weight: 700; color: #1d2a44;}
+.wgrid .body table tr.choose.update{background: #e1e8ff;}
+.wgrid .body table tr.choose.remove{background: #ffe3e3;}
+.wgrid .body table tr.choose.insert{background: #fff1d6;}
+
+.wgrid .body table tr.update{background: #e8edff;}
+.wgrid .body table tr.update:hover{background: #dbe3ff;}
+.wgrid .body table tr.update:active{background: #cfd9ff;}
+.wgrid .body table tr.update > td > div > input{background: #eef1ff;}
+.wgrid .body table tr.update > td > div > select{background: #eef1ff;}
+.wgrid .body table tr.update > td > span {background: inherit;}
+.wgrid .body table tr.update > input[type='checkbox']{background: #eef1ff;}
+.wgrid .body table tr.update > input[type='checkbox']:disabled{background: #e8edff; pointer-events: none;}
+.wgrid .body table tr.update > input[type='checkbox']:checked::after {display: block;}
+.wgrid .body table tr.update > input[type='checkbox']:checked{background: #eef1ff;}
+
+.wgrid .body table tr.remove{background: #ffe1e1 !important;}
+.wgrid .body table tr.remove:hover{background: #ffd2d2 !important;}
+.wgrid .body table tr.remove:active{background: #f9c1c1 !important;}
+.wgrid .body table tr.remove > td > div > input{background: #ffeaea;}
+.wgrid .body table tr.remove > td > div > select{background: #ffeaea;}
+.wgrid .body table tr.remove > td > span {background: inherit;}
+.wgrid .body table tr.remove >  input[type='checkbox']{background: #ffeaea !important; color: #8c8c8c !important;}
+.wgrid .body table tr.remove > input[type='checkbox']:disabled{background: #ffe1e1 !important; pointer-events: none;}
+.wgrid .body table tr.remove > input[type='checkbox']:checked::after {display: block;}
+.wgrid .body table tr.remove > input[type='checkbox']:checked{background: #ffeaea;}
+
+.wgrid .body table tr.insert{background: #fff2cf;}
+.wgrid .body table tr.insert:hover{background: #ffe7b3 !important;}
+.wgrid .body table tr.insert:active{background: #ffde96 !important;}
+.wgrid .body table tr.insert > td > div > input{background: #fff6df;}
+.wgrid .body table tr.insert > td > div > select{background: #fff6df;}
+.wgrid .body table tr.insert > td > span {background: inherit;}
+.wgrid .body table tr.insert > input[type='checkbox']{background: #fff6df;}
+.wgrid .body table tr.insert > input[type='checkbox']:disabled{background: #fff2cf; pointer-events: none;}
+.wgrid .body table tr.insert > input[type='checkbox']:checked::after {display: block;}
+.wgrid .body table tr.insert > input[type='checkbox']:checked{background: #fff6df;}
+
+.wgrid .body table tr td {overflow: hidden; white-space: nowrap; text-overflow: ellipsis; border-bottom: 0; border-top: 0; border: 1px solid #e1e1e1; padding: 5px 5px 5px 5px; text-align: center; border-collapse: collapse; border-spacing: 0; height: 30px;}
+.wgrid .body table tr td span{font-size: 1em;}
+.wgrid .header table th,
+.wgrid .body table tr td {box-sizing: border-box;}
+
+/* Pagination */
+.wgrid .pagination {
+    background: #f3f3f3;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    border-top-width: 4px;
+    border-top-color: #d7d7d7;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #d0d0d0;
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-left-color: #d0d0d0;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-right-color: #d0d0d0;
+}
+.wgrid .pagination button {margin: 0px 5px 0px 5px; background: #ffffff; border: 1px solid #c9c9c9; border-radius: 2px; color: #2f2f2f; display: inline-block; overflow: visible; text-align: center; white-space: nowrap; user-select: none; cursor: pointer; font-family: inherit; font-size: 1em; font-weight: 500; font-style: normal; line-height: 1.2; letter-spacing: normal; text-transform: none; box-shadow: none; transition: none; padding: 0.25rem 0.5rem; height: 30px; vertical-align: middle;}
+.wgrid .pagination button:hover{background: #f0f0f0}
+.wgrid .pagination button:active{background: #e6e6e6;}
+.wgrid .pagination .wgrid-page-size {display: inline-flex; align-items: center; gap: 6px; margin-right: 12px;}
+.wgrid .pagination .wgrid-page-size-label {font-size: 1em; color: #5f6368; vertical-align: middle;}
+.wgrid .pagination .wgrid-page-size-select {min-width: 72px;}
+.wgrid .pagination .current{font-weight: 700; background: #e0e0e0; cursor: default}
+
+/*  */
+.wgrid-empty-message{margin-left: 45%; margin-top: 19%;}
+.wgrid-hide{display:none !important; }
+
+
+
+
+/*  */
+.wgrid .wgrid-input{background: #ffffff; color:#2f2f2f; font-family: inherit; font-size: 1em; font-style: normal; line-height: 1.2; letter-spacing: normal; text-transform: none; box-shadow: none; height: 26px; border: 1px solid #c9c9c9; border-radius: 2px; vertical-align: bottom; text-indent: 5px; max-width: 100%; box-sizing: border-box; /*padding-right: 5px;*/}
+.wgrid .wgrid-input-gray:disabled{background: #f1f1f1; color: #9a9a9a;}
+.wgrid .wgrid-haed-select{background: #ffffff; color: rgba(34, 34, 34, .9); font-family: inherit; font-size: 0.8em; font-style: normal; line-height: 1.2; letter-spacing: normal; text-transform: none; box-shadow: none; border: 1px solid #c9c9c9; border-radius: 2px; padding: .25rem .5rem; vertical-align: bottom; }
+.wgrid .wgrid-select{background: #ffffff; color:#2f2f2f; font-family: inherit; font-size: 1em; font-style: normal; line-height: 1.2; letter-spacing: normal; text-transform: none; box-shadow: none; height: 30px; border: 1px solid #c9c9c9; border-radius: 2px; padding: .25rem .5rem; vertical-align: bottom; max-width: 100%; box-sizing: border-box;}
+.wgrid .wgrid-select:disabled{background: #f1f1f1; color:#9a9a9a; font-family: inherit; font-size: 1em; font-style: normal; line-height: 1.2; letter-spacing: normal; text-transform: none; box-shadow: none; height: 30px; border: 1px solid #c9c9c9; border-radius: 2px; padding: .25rem .5rem; vertical-align: bottom; max-width: 100%; box-sizing: border-box;}
+
+/*  */
+.wgrid .wgrid-btn{background: #f2f2f2; color:#2f2f2f; border: 1px solid #c9c9c9; display: inline-block; border-radius: 2px;	text-align: center; white-space: nowrap; vertical-align: bottom; user-select: none; overflow: visible; margin: 0; cursor: pointer; font-family: inherit; font-size: 1em; font-weight:600; font-style: normal; line-height: 1.2; letter-spacing: normal; text-transform: none; box-shadow: none; transition: none; padding: .25rem .5rem; height: 30px;}
+.wgrid .wgrid-btn:hover{background: #e8e8e8;}
+.wgrid .wgrid-btn:active{background: #dedede;}
+
+/*  */
+.wgrid .wgrid-addremove-btn{background: #f2f2f2; color:#2f2f2f; border: 1px solid #c9c9c9; display: inline-block; border-radius: 2px;	text-align: center; white-space: nowrap; vertical-align: bottom; user-select: none; overflow: visible; margin: 0; cursor: pointer; font-family: inherit; font-size: 1em; font-weight:600; font-style: normal; line-height: 1.2; letter-spacing: normal; text-transform: none; box-shadow: none; transition: none; padding: .25rem .5rem; width: 30px;}
+.wgrid .wgrid-addremove-btn:hover{background: #e8e8e8;}
+.wgrid .wgrid-addremove-btn:active{background: #dedede;}
+
+
+
+
+
+/*  */
+.wgrid-vail{border-color: #2f2f2f !important; background: #ededed !important; animation: fadeIn 0.26s ease-in;}
+
+/* width */
+.wgrid-wth10p{position:relative; width: 10% !important;}
+.wgrid-wth20p{position:relative; width: 20% !important;}
+.wgrid-wth30p{position:relative; width: 20% !important;}
+.wgrid-wth40p{position:relative; width: 50% !important;}
+.wgrid-wth50p{position:relative; width: 50% !important;}
+.wgrid-wth60p{position:relative; width: 70% !important;}
+.wgrid-wth70p{position:relative; width: 70% !important;}
+.wgrid-wth80p{position:relative; width: 80% !important;}
+.wgrid-wth90p{position:relative; width: 90% !important;}
+.wgrid-wth100p{position:relative; width: 100% !important;}
+.wgrid-wth-date{position:relative; width: calc(100% - 30px) !important;}
+.wgrid-wth-edit{position:relative; width: calc(100% - 10px) !important;}
+
+/* ?†Ìö®?±Í????¥ÌåÅ Î©îÏÑ∏ÏßÄ */
+.wgrid-vail-tooltip.right{position: absolute; background-color: rgba(0, 0, 0, 0.7); padding: 10px; color: rgba(246, 246, 246, .8); box-shadow: 0 3px 15px rgba(0,0,0,.75); animation: fadeIn 0.36s ease-in; border-radius: 4px; font-size: 1.3em; z-index: 7999;}
+.wgrid-vail-tooltip.right:after, .wgrid-vail-tooltip.right:before {right: 100%; top: 50%; border: solid transparent; content: " "; height: 0; width: 0; position: absolute; pointer-events: none; animation: fadeIn 0.36s ease-in;}
+.wgrid-vail-tooltip.right:after {border-right-color: rgba(0, 0, 0, 0.7); border-width: 8px; margin-top: -9px;}
+.wgrid-vail-tooltip.right:before {border-right-color: rgba(0, 0, 0, 0.7);	border-width: 8px; margin-top: -9px;}
+
+.wgrid-vail-tooltip.left {position: absolute; background-color: rgba(0, 0, 0, 0.7); padding: 10px; color: rgba(246, 246, 246, .8); box-shadow: 0 3px 15px rgba(0,0,0,.75); animation: fadeIn 0.36s ease-in; border-radius: 4px; font-size: 1.3em; z-index: 7999;}
+.wgrid-vail-tooltip.left:after, .wgrid-vail-tooltip.left:before {left: 100%; top: 50%; border: solid transparent; content: " "; height: 0; width: 0; position: absolute; pointer-events: none; animation: fadeIn 0.36s ease-in;}
+.wgrid-vail-tooltip.left:after {border-left-color: rgba(0, 0, 0, 0.7); border-width: 8px; margin-top: -9px;}
+.wgrid-vail-tooltip.left:before {border-left-color: rgba(0, 0, 0, 0.7);	border-width: 8px; margin-top: -9px;}
+
+.wgrid-vail-tooltip.top {position: absolute; background-color: rgba(0, 0, 0, 0.7); padding: 10px; color: rgba(246, 246, 246, .8); box-shadow: 0 3px 15px rgba(0,0,0,.75); animation: fadeIn 0.36s ease-in; border-radius: 4px; font-size: 1.3em; z-index: 7999;}
+.wgrid-vail-tooltip.top:after, .wgrid-vail-tooltip.top:before {top: 100%; left: 50%; border: solid transparent; content: " "; height: 0; width: 0; position: absolute; pointer-events: none; animation: fadeIn 0.36s ease-in;}
+.wgrid-vail-tooltip.top:after {border-top-color: rgba(0, 0, 0, 0.7); border-width: 8px; margin-left: -9px;}
+.wgrid-vail-tooltip.top:before {border-top-color: rgba(0, 0, 0, 0.7);	border-width: 8px; margin-left: -9px;}
+
+.wgrid-vail-tooltip.bottom {position: absolute; background-color: rgba(0, 0, 0, 0.7); padding: 10px; color: rgba(246, 246, 246, .8); box-shadow: 0 3px 15px rgba(0,0,0,.75); animation: fadeIn 0.36s ease-in; border-radius: 4px; font-size: 1.3em; z-index: 7999;}
+.wgrid-vail-tooltip.bottom:after, .wgrid-vail-tooltip.bottom:before {right: 100%; top: 50%; border: solid transparent; content: " "; height: 0; width: 0; position: absolute; pointer-events: none; animation: fadeIn 0.36s ease-in;}
+.wgrid-vail-tooltip.bottom:after {border-right-color: rgba(0, 0, 0, 0.7); border-width: 8px; margin-top: -9px;}
+.wgrid-vail-tooltip.bottom:before {border-right-color: rgba(0, 0, 0, 0.7);	border-width: 8px; margin-top: -9px;}
+
+
+
