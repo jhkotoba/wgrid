@@ -2,7 +2,7 @@
   "name": "wgrid",
   "version": "1.0.0",
   "description": "wgrid",
-  "main": "index.js",
+  "main": "src/wgrid.js",
   "directories": {
     "example": "examples"
   },

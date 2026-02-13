@@ -10,16 +10,7 @@ export const util = {
     },
     isNotEmpty(value){ 
         return !this.isEmpty(value);
-    },
-    isFunction(value){
-        if(this.isEmpty(value)){
-            return false;
-        }else if(typeof value === "function"){
-            return true;
-        }else{
-            return false;
-        }
-    },
+    },    
     isNotEmptyChildObjct(value, ...arge){
         if(this.isEmpty(value)){
             return false;

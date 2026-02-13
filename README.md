@@ -15,7 +15,7 @@ Module scripts require an HTTP server (file:// will not work).
 From repo root:
 ```bash
 # Option 1: Built-in Node server (examples/server.js)
-npm run run
+npm run server
 # Option 2: Python (no extra install)
 python -m http.server 5173
 # Option 3: Node (serve)
